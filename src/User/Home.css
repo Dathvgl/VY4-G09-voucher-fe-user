@@ -1,0 +1,13 @@
+.linetext-2 {
+    height: 2.2em;
+    line-height: 1.1;
+    overflow: auto;
+}
+
+.as-square {
+    aspect-ratio: 20 / 8;
+}
+
+.center-crop {
+    object-fit: cover;
+}
