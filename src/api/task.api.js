@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseURL = "http://139.59.234.205:8080";
+const BaseURL = "http://139.59.234.205:8080/api";
 
 export default class TaskAPI {
   // Voucher
