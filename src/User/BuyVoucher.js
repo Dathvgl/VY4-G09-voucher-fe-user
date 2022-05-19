@@ -9,7 +9,7 @@ import { Services } from "../Fake_Data";
 function Item(props) {
   const navigate = useNavigate();
   const itemDetail = () => {
-    navigate("/User/buyvoucher/detail-voucher/" + props.index, {
+    navigate("/buyvoucher/detail-voucher/" + props.index, {
       state: { id: props.index },
     });
   };

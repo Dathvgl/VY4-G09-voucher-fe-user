@@ -22,7 +22,7 @@ function Checkbox(props) {
 function Item(props) {
   const navigate = useNavigate();
   const itemDetail = () => {
-    navigate("/User/detail-article/" + props.id, { state: { id: props.id } });
+    navigate("/detail-article/" + props.id, { state: { id: props.id } });
   };
 
   return (
