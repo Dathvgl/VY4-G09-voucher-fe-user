@@ -31,7 +31,7 @@ function Item(props) {
         <Figure className="my-0">
           <Figure.Image
             className="as-square center-crop w-100"
-            src={require(`../Images/${props.thumnail}.webp`)}
+            src={props.thumnail}
             alt={"Error"}
           ></Figure.Image>
         </Figure>

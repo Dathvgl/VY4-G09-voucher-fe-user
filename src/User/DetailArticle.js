@@ -83,7 +83,7 @@ function DetailArticle() {
       <Figure>
         {article.thumnail !== undefined && (
           <Figure.Image
-            src={require(`../Images/${article.thumnail}.webp`)}
+            src={article.thumnail}
             alt={"Error"}
           ></Figure.Image>
         )}
