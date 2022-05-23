@@ -20,14 +20,6 @@ export default class TaskAPI {
     return dataPromise;
   }
 
-  static async getVouchersOwned(userId) {
-    const promise = axios.get(
-      `${BaseURL}/vouchers/find/owned?id=${userId}`
-    );
-    const dataPromise = promise.then((res) => res.data);
-    return dataPromise;
-  }
-
   static async getVouchersFree(service) {
     const promise = axios.get(
       `${BaseURL}/vouchers/find/?service=${service}`
