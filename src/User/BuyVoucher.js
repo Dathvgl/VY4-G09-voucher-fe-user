@@ -10,7 +10,7 @@ function Item(props) {
   const navigate = useNavigate();
   const itemDetail = () => {
     navigate("/buyvoucher/detail-voucher/" + props.index, {
-      state: { id: props.index },
+      state: { id: props.id },
     });
   };
 
@@ -23,16 +23,12 @@ function Item(props) {
           <div className="my-2">
             Số lượng: {props.quantity !== -1 ? props.quantity : "Vô hạn"}
           </div>
-          <h5 className="text-danger">
-            Giảm:{" "}
-            {props.type === "stable" ? (
-              <React.Fragment>
-                {props.value.toLocaleString("en").replace(",", ".")} đ
-              </React.Fragment>
-            ) : (
-              <React.Fragment>{props.value} %</React.Fragment>
-            )}
-          </h5>
+          {props.limited !== undefined && (
+            <h5 className="text-danger">
+              Giảm: {props.discount}% tới{" "}
+              {props.limited.toLocaleString("en").replace(",", ".")} đ
+            </h5>
+          )}
           <h5>
             Giá mua: {props.price.toLocaleString("en").replace(",", ".")} đ
           </h5>

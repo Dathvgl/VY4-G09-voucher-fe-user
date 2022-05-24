@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const BaseURL = "http://139.59.234.205:8080/api";
+// const BaseURL = "http://localhost:3000/api";
 
 export default class TaskAPI {
   // Voucher
@@ -45,15 +46,19 @@ export default class TaskAPI {
   }
 
   static async putVoucher(id, user) {
-    axios.put(
+    const promise = axios.put(
       `${BaseURL}/vouchers/activate/voucher?id=${id}&user=${user}`
     );
+    const dataPromise = promise.then((res) => res.data);
+    return dataPromise;
   }
 
   static async putVoucherBuy(id, user) {
-    axios.put(
+    const promise = axios.put(
       `${BaseURL}/vouchers/owned/voucher?id=${id}&user=${user}`
     );
+    const dataPromise = promise.then((res) => res.data);
+    return dataPromise;
   }
 
   // Article
