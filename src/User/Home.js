@@ -9,7 +9,7 @@ function Home(props) {
         <div className="container">
           <div className="navbar-collapse collapse d-sm-inline-flex justify-content-between">
             <ul className="nav navbar-nav">
-              {/* <li><Link className="nav-link text-dark" to={"usevoucher"}>Use Voucher</Link></li> */}
+              <li><Link className="nav-link text-dark" to={"usevoucher"}>Use Voucher</Link></li>
               <li>
                 <Link className="nav-link text-dark" to={"listvoucher"}>
                   List Voucher

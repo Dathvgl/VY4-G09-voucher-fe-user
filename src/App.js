@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import HomeUser from "./User/Home";
-// import UseVoucher from "./User/UseVoucher";
+import UseVoucher from "./User/UseVoucher";
 import ListVoucher from "./User/ListVoucher";
 import BuyVoucher from "./User/BuyVoucher";
 import DetailVoucher from "./User/DetailVoucher";
@@ -19,7 +19,7 @@ function App() {
     <React.Fragment>
       <HomeUser user={user} />
       <Routes>
-        {/* <Route path="usevoucher" element={<UseVoucher user={user} />} /> */}
+        <Route path="usevoucher" element={<UseVoucher user={user} />} />
         <Route path="listvoucher" element={<ListVoucher />} />
         <Route path="detail-article/*" element={<DetailArticle />} />
         <Route path="buyvoucher" element={<BuyVoucher />} />

@@ -58,7 +58,7 @@ function ItemList(props) {
       );
       return;
     }
-    if ((index + 1) % 5 !== 0) return;
+    if ((index + 1) % 4 !== 0) return;
 
     jsx.push(
       <Row key={index} className="my-3">

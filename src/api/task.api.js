@@ -6,25 +6,19 @@ const BaseURL = "http://139.59.234.205:8080/api";
 export default class TaskAPI {
   // Voucher
   static async getVouchers(service) {
-    const promise = axios.get(
-      `${BaseURL}/vouchers/find/?service=${service}`
-    );
+    const promise = axios.get(`${BaseURL}/vouchers/find/?service=${service}`);
     const dataPromise = promise.then((res) => res.data);
     return dataPromise;
   }
 
   static async getVouchersUse(userId) {
-    const promise = axios.get(
-      `${BaseURL}/vouchers/find/use?id=${userId}`
-    );
+    const promise = axios.get(`${BaseURL}/vouchers/find/use?id=${userId}`);
     const dataPromise = promise.then((res) => res.data);
     return dataPromise;
   }
 
   static async getVouchersFree(service) {
-    const promise = axios.get(
-      `${BaseURL}/vouchers/find/?service=${service}`
-    );
+    const promise = axios.get(`${BaseURL}/vouchers/find/?service=${service}`);
     const dataPromise = promise.then((res) => res.data);
     return dataPromise;
   }
@@ -38,16 +32,15 @@ export default class TaskAPI {
   }
 
   static async getVoucher(id) {
-    const promise = axios.get(
-      `${BaseURL}/vouchers/find/voucher?id=${id}`
-    );
+    const promise = axios.get(`${BaseURL}/vouchers/find/voucher?id=${id}`);
     const dataPromise = promise.then((res) => res.data);
     return dataPromise;
   }
 
-  static async putVoucher(id, user) {
+  static async putVoucher(id, user, price) {
     const promise = axios.put(
-      `${BaseURL}/vouchers/activate/voucher?id=${id}&user=${user}`
+      `${BaseURL}/vouchers/activate/voucher?id=${id}&user=${user}`,
+      price
     );
     const dataPromise = promise.then((res) => res.data);
     return dataPromise;
@@ -78,8 +71,6 @@ export default class TaskAPI {
 
   // Giftcard
   static async putGiftcard(id, user) {
-    axios.put(
-      `${BaseURL}/giftcards/activate/giftcard?id=${id}&user=${user}`
-    );
+    axios.put(`${BaseURL}/giftcards/activate/giftcard?id=${id}&user=${user}`);
   }
 }

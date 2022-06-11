@@ -1,7 +1,14 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+import StripeCheckout from "react-stripe-checkout";
 import TaskAPI from "../api/task.api";
+
+const stripeKey =
+  "pk_test_51L2e6FIsvcE38Kr4AiB6vDC5qigXmubJAv5sIGUsOYPpqMLJV3WhsK3pX4NFiYtjyebTDj37wx6UMWJdkBTLAI3O00KsIiuoaN";
+const urlStripe = "http://139.59.234.205:8080/api/contacts/checkout";
+// const urlStripe = "http://localhost:3000/api/contacts/checkout";
 
 function DetailVoucher(props) {
   const location = useLocation();
@@ -15,18 +22,41 @@ function DetailVoucher(props) {
     });
   }, [location]);
 
-  const onFormSubmit = (e) => {
-    e.preventDefault();
+  // const onFormSubmit = (e) => {
+  //   e.preventDefault();
+  //   setError({});
+
+  //   const user = props.user;
+  //   TaskAPI.putVoucherBuy(voucher.id, user)
+  //     .then((res) => alert("Mua thành công"))
+  //     .catch((error) => {
+  //       const message = error.response.data.message;
+  //       setError(message);
+  //     });
+  // };
+
+  async function handleToken(token, address) {
     setError({});
+
+    const product = {
+      name: "voucher: " + voucher.id,
+      price: voucher.price,
+      description: "Buying" + voucher.id,
+    };
 
     const user = props.user;
     TaskAPI.putVoucherBuy(voucher.id, user)
-      .then((res) => alert("Mua thành công"))
+      .then((res) => {
+        alert("Mua thành công");
+        axios.post(urlStripe, { token, product, voucher: voucher.id, user });
+      })
       .catch((error) => {
         const message = error.response.data.message;
         setError(message);
       });
-  };
+    // const res = await axios.post(urlStripe, { token, product });
+    // console.log(res);
+  }
 
   return (
     <React.Fragment>
@@ -69,7 +99,7 @@ function DetailVoucher(props) {
             )}
           </Col>
           <Col lg={6}>
-            <Form onSubmit={onFormSubmit}>
+            {/* <Form onSubmit={onFormSubmit}>
               <Form.Group className="my-3">
                 <Form.Control
                   name="namecard"
@@ -99,7 +129,23 @@ function DetailVoucher(props) {
               <Button className="my-2" variant="primary" type="submit">
                 Mua voucher
               </Button>
-            </Form>
+            </Form> */}
+            <Form.Group className="my-3">
+              <Form.Control
+                name="namecard"
+                type="text"
+                value={props.user}
+                readOnly
+              />
+            </Form.Group>
+            <StripeCheckout
+              stripeKey={stripeKey}
+              token={handleToken}
+              // name={product.name}
+              // amount={product.price}
+              billingAddress
+              shippingAddress
+            ></StripeCheckout>
           </Col>
         </Row>
       </Container>
